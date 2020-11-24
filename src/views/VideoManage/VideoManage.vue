@@ -123,6 +123,9 @@ export default {
     }
   },
   methods: {
+    handleSelectionChange(){
+
+    },
     // 添加素材文件弹窗页码选择
     handleCurrentChange3(val) {
       this.list3.page = val;

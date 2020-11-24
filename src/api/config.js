@@ -8,6 +8,9 @@ const service = axios.create({
 // 添加请求拦截器
 service.interceptors.request.use(
   config => {
+    if(store.state.token){
+      config.headers['Authorization'] = `Bearer ${store.state.token}`
+    }
     return config;
   },
   err => {

@@ -2,11 +2,12 @@
   <header>
     <div class="l-con">
       <!-- :icon="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'" -->
-      <el-button
+      <!-- <el-button
         icon="el-icon-menu"
         size="mini"
         @click="changeMenu"
-      ></el-button>
+      ></el-button> -->
+      <i class="icon iconfont  mr5" :class="isCollapse ? 'iconzhankai' : 'iconshousuo'" @click="changeMenu"></i>
       <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item
@@ -33,6 +34,7 @@
 
 <script>
 import { mapState } from "vuex";
+import Cookie from "js-cookie";
 export default {
   data() {
     return {
@@ -58,6 +60,8 @@ export default {
         that.$router.push({
           path: "/login"
         });
+        Cookie.set("token", '');
+        that.$store.commit("setToken", '');
       }
     }
   }
@@ -65,6 +69,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.iconfont{
+  font-size: 22px;
+  color: #eee;
+}
 header {
   display: flex;
   align-items: center;

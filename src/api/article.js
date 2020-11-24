@@ -20,7 +20,7 @@ const article = {
 
   // 登录
   login(params) {
-    return axios.post(`${base.sq}test/login`, qs.stringify(params));
+    return axios.post(`${base.sq}/api/users/login`, qs.stringify(params));
   }
 
   // 其他接口…………

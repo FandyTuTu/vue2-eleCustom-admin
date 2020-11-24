@@ -8,14 +8,20 @@
       label-width="80px"
       class="login-form"
     >
-      <el-form-item label="用户名" prop="userName">
+      <el-form-item
+        label="用户名"
+        prop="userName"
+      >
         <el-input
           type="text"
           v-model="ruleForm.userName"
           autocomplete="off"
         ></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="pass">
+      <el-form-item
+        label="密码"
+        prop="pass"
+      >
         <el-input
           type="password"
           v-model="ruleForm.pass"
@@ -24,9 +30,11 @@
       </el-form-item>
       <el-form-item>
         <div class="login-btn">
-          <el-button type="info" @click="submitForm('ruleForm')"
-            >登录</el-button
-          >
+          <el-button
+            type="info"
+            @click="submitForm('ruleForm')"
+            v-loading.fullscreen.lock="fullscreenLoading"
+          >登录</el-button>
           <el-button @click="resetForm('ruleForm')">重置</el-button>
         </div>
       </el-form-item>
@@ -37,45 +45,59 @@
 <script>
 import { Message } from "element-ui";
 import utils from "@/common/utils";
+import Cookie from "js-cookie";
 export default {
   data() {
     return {
       ruleForm: {
         userName: "",
-        pass: ""
+        pass: "",
       },
       rules: {
         userName: [
-          { required: true, message: "请输入用户名", trigger: "blur" }
+          { required: true, message: "请输入用户名", trigger: "blur" },
         ],
         pass: [
           { required: true, message: "请输入密码", trigger: "blur" },
-          { min: 3, max: 6, message: "长度在 3 到 6 个字符", trigger: "blur" }
-        ]
-      }
+          { min: 3, max: 6, message: "长度在 3 到 6 个字符", trigger: "blur" },
+        ],
+      },
+      fullscreenLoading:false,
     };
   },
   methods: {
     submitForm(formName) {
       let that = this;
-      that.$refs[formName].validate(valid => {
+      that.$refs[formName].validate((valid) => {
         if (valid) {
+          that.fullscreenLoading = true;
           //登录
           that.$api.article
             .login({
               username: this.ruleForm.userName,
-              password: this.ruleForm.pass
+              password: this.ruleForm.pass,
             })
-            .then(res => {
-              console.log("登录成功", res);
-              utils.setlocalStorage("tokenKey", res.data.data.token);
-              that.$router.push({
-                path: "/"
-              });
+            .then((res) => {
+              let result = res.data;
+              if (result.code === 0) {
+                if (result.token) {
+                  Cookie.set("token", result.token);
+                  that.$store.commit("setToken", result.token);
+                  that.$router.push({
+                    path: "/",
+                  });
+                }
+              }
+              // utils.setlocalStorage("tokenKey", res.data.data.token);
+              // that.$router.push({
+              //   path: "/"
+              // });
             })
-            .catch(err => {
-              console.log("登录失败", err);
-              Message.error(err.data.msg);
+            .catch((err) => {
+              console.log("接口登录失败", err);
+            })
+            .finally((all) => {
+              that.fullscreenLoading = false;
             });
         } else {
           console.log("error submit!!");
@@ -85,8 +107,8 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
-    }
-  }
+    },
+  },
 };
 </script>
 

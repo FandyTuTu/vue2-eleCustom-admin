@@ -1,0 +1,58 @@
+{
+  "id": "2226133",
+  "name": "amdin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "16372241",
+      "name": "编辑流程",
+      "font_class": "bianjiliucheng",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "16372248",
+      "name": "插件功能",
+      "font_class": "chajiangongneng",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "16372251",
+      "name": "出库查询",
+      "font_class": "chukuchaxun",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "16394899",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "16394903",
+      "name": "收缩",
+      "font_class": "shousuo",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "16480067",
+      "name": "收藏列表",
+      "font_class": "shoucangliebiao",
+      "unicode": "e69b",
+      "unicode_decimal": 59035
+    },
+    {
+      "icon_id": "16517969",
+      "name": "待办",
+      "font_class": "daiban",
+      "unicode": "e6be",
+      "unicode_decimal": 59070
+    }
+  ]
+}

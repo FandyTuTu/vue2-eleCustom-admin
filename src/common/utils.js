@@ -10,6 +10,24 @@ let utils = {
         ) || [, ""])[1].replace(/\+/g, "%20")
       ) || null
     );
+  },
+  /**
+   * 存储localStorage
+   */
+  setlocalStorage(name, val) {
+    localStorage.setItem(name, val);
+  },
+  /**
+   * 获取localStorage
+   */
+  getlocalStorage(name) {
+    localStorage.getItem(name);
+  },
+  /**
+   * 移除localStorage
+   */
+  relocalStorage(name) {
+    localStorage.getItem(name);
   }
 };
 export default utils;

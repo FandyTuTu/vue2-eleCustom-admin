@@ -2,8 +2,9 @@
  * 接口域名的管理
  */
 const base = {
+  sq: "http://www.tukzi.cn/qianyue/index.php/api/"
   // 线上
-  sq: "/"
+  // sq: "/"
   // 本地
   //  sq: '/api',
 

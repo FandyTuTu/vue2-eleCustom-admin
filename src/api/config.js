@@ -30,3 +30,5 @@ service.interceptors.response.use(
     console.log(err);
   }
 );
+
+export default service;

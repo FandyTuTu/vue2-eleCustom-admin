@@ -1,1 +1,5 @@
 $theme-color:#33aef0;
+.el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+    background-color: #e4e4e4;
+    color: #000;
+}

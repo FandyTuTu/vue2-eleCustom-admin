@@ -33,7 +33,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      userIcon: require("../assets/logo.png")
+      userIcon: require("../assets/dog.png")
     };
   },
   computed: {

@@ -20,7 +20,21 @@ const article = {
 
   // 登录
   login(params) {
-    return axios.post(`${base.sq}/api/users/login`, qs.stringify(params));
+    return axios.post(`${base.sq}/api/admin_user/login`, qs.stringify(params));
+  },
+  // 获取用户信息
+  getuserInfo(params) {
+    return axios.post(
+      `${base.sq}/api/admin_user/getuserInfo`,
+      qs.stringify(params)
+    );
+  },
+  // 菜单
+  getMenu(params) {
+    return axios.post(
+      `${base.sq}/api/admin_common/getMenu`,
+      qs.stringify(params)
+    );
   }
 
   // 其他接口…………

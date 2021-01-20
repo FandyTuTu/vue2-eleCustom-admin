@@ -1,6 +1,6 @@
 <template>
   <div>
-    page1
+    文章
   </div>
 </template>
 

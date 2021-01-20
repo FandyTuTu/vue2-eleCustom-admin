@@ -1,13 +1,12 @@
 export default {
   state: {
-    token: "",
+    token: ""
   },
   mutations: {
     // 设置token
-    setToken(state,val){
+    setToken(state, val) {
       state.token = val;
     }
   },
   actions: {}
 };
-  

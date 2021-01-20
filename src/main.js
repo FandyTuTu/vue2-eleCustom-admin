@@ -5,37 +5,57 @@ import store from "./store";
 
 // 全局配置
 import "@/assets/scss/reset.scss"; //一定要在eleui之前
+import "@/assets/scss/common.scss";
 import "element-ui/lib/theme-chalk/index.css";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import api from "@/api"; // 导入api接口
 
-import '@/assets/iconfont/iconfont.css';
+import "@/assets/iconfont/iconfont.css";
 // import http from "@/api/config";
 // import "./mock";
 
 // 第三方包
 import ElementUI from "element-ui";
-import Cookie from 'js-cookie'
+import Cookie from "js-cookie";
+//导入进度条插件
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import echarts from 'echarts'
+
+Vue.prototype.$echarts = echarts
 Vue.use(ElementUI);
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 Vue.prototype.$api = api; // 将api挂载到vue的原型上
 
-router.beforeEach((to,from,next)=>{
-  store.commit('setToken',Cookie.get('token'))
-  
-  if(to.meta.requireAuth){
-    if(store.state.token || Cookie.get('token')){
-      next()
-    }else{
-      next({path:'/login'})
-    }
-  }else{
-    next()
-  }
-})
+// //全局进度条的配置
+// NProgress.configure({ 
+//   showSpinner: true,  //加载微调器设置,默认为true
+//   //使用缓动（CSS缓动字符串）和速度（以毫秒为单位）调整动画设置。（默认：ease和200）
+//   easing: 'ease',
+//   speed: 2000,
+//   minimum: 0,  //更改启动时使用的最小百分比
+// })
 
+//路由进入前
+router.beforeEach((to, from, next) => {
+  store.commit("setToken", Cookie.get("token"));
+  NProgress.start();
+  if (to.meta.requireAuth) {
+    if (store.state.token || Cookie.get("token")) {
+      next();
+    } else {
+      next({ path: "/login" });
+    }
+  } else {
+    next();
+  }
+});
+//路由进入后
+router.afterEach(() => {  
+  NProgress.done()
+})
 new Vue({
   router,
   store,

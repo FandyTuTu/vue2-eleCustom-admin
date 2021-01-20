@@ -25,8 +25,8 @@ export default {
   components: {
     CommonHeader,
     CommonAside,
-    CommonTab
-  }
+    CommonTab,
+  },
 };
 </script>
 

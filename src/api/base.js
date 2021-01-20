@@ -3,7 +3,8 @@
  */
 const base = {
   // sq: "http://www.tukzi.cn/qianyue/index.php/api/"
-  sq:'http://127.0.0.1:3000'
+  sq: "http://www.tukzi.cn:3000"
+  // sq:'http://127.0.0.1:3000'
   // 线上
   // sq: "/"
   // 本地

@@ -17,8 +17,16 @@ const routes = [
         path: "/",
         name: "home",
         component: () => import("@/views/Home/Home"),
-        meta:{
-          requireAuth: true//true此页面需登录权限
+        meta: {
+          requireAuth: true //true此页面需登录权限
+        }
+      },
+      {
+        path: "/article",
+        name: "article",
+        component: () => import("@/views/Article/index"),
+        meta: {
+          requireAuth: true //true此页面需登录权限
         }
       },
 
@@ -26,8 +34,8 @@ const routes = [
         path: "/video",
         name: "video",
         component: () => import("@/views/VideoManage/VideoManage"),
-        meta:{
-          requireAuth: true//true此页面需登录权限
+        meta: {
+          requireAuth: true //true此页面需登录权限
         }
       },
 
@@ -35,8 +43,8 @@ const routes = [
         path: "/user",
         name: "user",
         component: () => import("@/views/UserManage/UserManage"),
-        meta:{
-          requireAuth: true//true此页面需登录权限
+        meta: {
+          requireAuth: true //true此页面需登录权限
         }
       },
 
@@ -44,8 +52,8 @@ const routes = [
         path: "/page1",
         name: "page1",
         component: () => import("@/views/Other/PageOne"),
-        meta:{
-          requireAuth: true//true此页面需登录权限
+        meta: {
+          requireAuth: true //true此页面需登录权限
         }
       },
 
@@ -53,10 +61,16 @@ const routes = [
         path: "/page2",
         name: "page2",
         component: () => import("@/views/Other/PageTwo"),
-        meta:{
-          requireAuth: true//true此页面需登录权限
+        meta: {
+          requireAuth: true //true此页面需登录权限
         }
-      }
+      },
+      
+      {
+        path: "/test",
+        name: "test",
+        component: () => import("@/views/Test")
+      },
     ]
   }
 ];

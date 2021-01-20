@@ -11,14 +11,19 @@
       @close="handleClose(tag, tindex)"
       @click="changeMenu(tag)"
       size="small"
-      >{{ tag.label }}</el-tag
-    >
+    >{{ tag.label }}</el-tag>
     <div class="tags-close-box">
       <el-dropdown @command="handleTags">
-        <el-button size="mini" type="info">
+        <el-button
+          size="mini"
+          type="info"
+        >
           <i class="el-icon-arrow-down "></i>
         </el-button>
-        <el-dropdown-menu size="mini" slot="dropdown">
+        <el-dropdown-menu
+          size="mini"
+          slot="dropdown"
+        >
           <el-dropdown-item command="other">关闭其他</el-dropdown-item>
           <el-dropdown-item command="all">关闭所有</el-dropdown-item>
         </el-dropdown-menu>
@@ -32,15 +37,15 @@ import { mapState, mapMutations } from "vuex";
 export default {
   computed: {
     ...mapState({
-      tags: state => state.tab.tabsList
-    })
+      tags: (state) => state.tab.tabsList,
+    }),
   },
   data() {
     return {};
   },
   methods: {
     ...mapMutations({
-      close: "closeTab"
+      close: "closeTab",
     }),
     handleClose(tag, tindex) {
       this.close(tag);
@@ -65,15 +70,15 @@ export default {
     },
     // 关闭其他标签
     closeOther() {
-      const curItem = this.tags.filter(item => {
+      const curItem = this.tags.filter((item) => {
         return item.path === this.$route.fullPath;
       });
       this.$store.commit("closeOther", curItem);
     },
     handleTags(command) {
       command === "other" ? this.closeOther() : this.closeAll();
-    }
-  }
+    },
+  },
 };
 </script>
 

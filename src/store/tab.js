@@ -1,9 +1,10 @@
+import storage from "@/common/storage";
+
 export default {
   state: {
     isCollapse: false, //是否收缩左侧菜单
     currentMenu: {}, //当前选中的菜单
-    tabsList: [
-      {
+    tabsList: storage.session_get('tabsList') || [{
         path: "/",
         name: "home",
         label: "首页",
@@ -22,6 +23,8 @@ export default {
         let result = state.tabsList.findIndex(item => item.name === val.name);
         result === -1 ? state.tabsList.push(val) : "";
       }
+      //存储菜单，防止刷新丢失
+      storage.session_set('tabsList',state.tabsList)
     },
     // 关闭单个标签
     closeTab(state, val) {
@@ -49,6 +52,7 @@ export default {
       } else {
         console.log("没有了");
       }
+      storage.set('tabsList',state.tabsList)
     },
     // 收缩左侧导航
     changeCollapse(state) {
@@ -65,6 +69,7 @@ export default {
         }
       ];
       state.currentMenu = {};
+      storage.session_set('tabsList',state.tabsList)
     },
     // 关闭其他标签
     closeOther(state, val) {

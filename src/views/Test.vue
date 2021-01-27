@@ -5,7 +5,11 @@
       addIcon="el-icon-upload2"
       @send="gotest"
     ></uploadImg> -->
-    <Histogram ref="necharts"></Histogram>
+    <Histogram
+      ref="necharts"
+      width="500px"
+      height="500px"
+    ></Histogram>
   </div>
 </template>
 

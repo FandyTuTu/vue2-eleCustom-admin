@@ -3,7 +3,6 @@
         :ref="className"
         id="main"
         :style="{width: width, height: height}"
-        style="width:500px; height:400px"
     ></div>
 </template>
 

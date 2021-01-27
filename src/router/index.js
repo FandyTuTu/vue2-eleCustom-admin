@@ -71,6 +71,14 @@ const routes = [
         name: "test",
         component: () => import("@/views/Test")
       },
+      {
+        path: "/table",
+        name: "table",
+        component: () => import("@/views/Table/Table"),
+        meta: {
+          requireAuth: true //true此页面需登录权限
+        }
+      },
     ]
   }
 ];

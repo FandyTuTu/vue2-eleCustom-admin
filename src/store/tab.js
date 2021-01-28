@@ -3,7 +3,7 @@ import storage from "@/common/storage";
 export default {
   state: {
     isCollapse: false, //是否收缩左侧菜单
-    currentMenu: {}, //当前选中的菜单
+    currentMenu: storage.session_get('currentMenu') ||{}, //当前选中的菜单
     tabsList: storage.session_get('tabsList') || [{
         path: "/",
         name: "home",
@@ -25,6 +25,7 @@ export default {
       }
       //存储菜单，防止刷新丢失
       storage.session_set('tabsList',state.tabsList)
+      storage.session_set('currentMenu',state.currentMenu)
     },
     // 关闭单个标签
     closeTab(state, val) {
@@ -53,6 +54,7 @@ export default {
         console.log("没有了");
       }
       storage.set('tabsList',state.tabsList)
+      storage.session_set('currentMenu',state.currentMenu)
     },
     // 收缩左侧导航
     changeCollapse(state) {
@@ -70,10 +72,12 @@ export default {
       ];
       state.currentMenu = {};
       storage.session_set('tabsList',state.tabsList)
+      storage.session_set('currentMenu',state.currentMenu)
     },
     // 关闭其他标签
     closeOther(state, val) {
       state.tabsList = val;
+      storage.session_set('tabsList',state.tabsList)
     }
   },
   actions: {

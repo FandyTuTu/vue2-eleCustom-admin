@@ -1,7 +1,7 @@
 <template>
   <el-menu
+    :default-active="activeIndex"
     :collapse="isCollapse"
-    default-active="2"
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
@@ -94,6 +94,7 @@ export default {
         //   ]
         // }
       ],
+      activeIndex: "/",
     };
   },
   computed: {
@@ -107,11 +108,22 @@ export default {
       return this.$store.state.tab.isCollapse;
     },
   },
+  // 检测路由变化
+  watch: {
+    $route() {
+      this.setCurrentRoute();
+    },
+  },
   created() {
     this.getMemu();
+    this.setCurrentRoute();
   },
   methods: {
     ...mapActions(["semenu"]),
+    // 设置当前路由
+    setCurrentRoute() {
+      this.activeIndex = this.$route.path; // 通过他就可以监听到当前路由状态并激活当前菜单
+    },
     getMemu() {
       let that = this;
       that.$api.article

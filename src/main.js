@@ -17,6 +17,7 @@ import "@/assets/iconfont/iconfont.css";
 
 // 第三方包
 import ElementUI from "element-ui";
+import '../theme/index.css';//自定义elementui
 import Cookie from "js-cookie";
 //导入进度条插件
 import NProgress from 'nprogress'

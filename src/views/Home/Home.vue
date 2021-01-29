@@ -111,7 +111,7 @@ export default {
   methods: {
     getuserInfo() {
       let that = this;
-      that.$api.article
+      that.$api.common
         .getuserInfo({})
         .then((res) => {
           let result = res.data;

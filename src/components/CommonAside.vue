@@ -110,8 +110,12 @@ export default {
   },
   // 检测路由变化
   watch: {
-    $route() {
+    $route(val) {
       this.setCurrentRoute();
+    },
+    // 监听浏览器直接输入路由(包含跳转)，将此路由添加到tabsList
+    "$route.path": function(val) {
+      this.$store.commit("selectMenu", val);
     },
   },
   created() {
@@ -119,19 +123,21 @@ export default {
     this.setCurrentRoute();
   },
   methods: {
-    ...mapActions(["semenu"]),
+    ...mapActions(["semenu", "setAllMenu"]),
     // 设置当前路由
     setCurrentRoute() {
       this.activeIndex = this.$route.path; // 通过他就可以监听到当前路由状态并激活当前菜单
     },
     getMemu() {
       let that = this;
-      that.$api.article
+      that.$api.common
         .getMenu()
         .then((res) => {
           let result = res.data;
           if (result.code === 0) {
             that.asideMenu = result.data;
+            // 将所有菜单存储到store
+            that.setAllMenu(result.data);
           }
         })
         .catch((err) => {})
@@ -142,7 +148,7 @@ export default {
       if (this.$router.history.router.currentRoute.name !== val.name) {
         this.$router.push({ name: val.name });
       }
-      this.semenu(val);
+      // this.semenu(val);
     },
     handleOpen(key, keyPath) {
       console.log(key, keyPath);

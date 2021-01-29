@@ -79,6 +79,15 @@ const routes = [
           requireAuth: true //true此页面需登录权限
         }
       },
+      {
+        path: "/tableDetail",
+        name: "tableDetail",
+        component: () => import("@/views/Table/TableDetail"),
+        meta: {
+          requireAuth: true //true此页面需登录权限
+        }
+      },
+      
     ]
   }
 ];

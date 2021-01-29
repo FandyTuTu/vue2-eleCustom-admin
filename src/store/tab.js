@@ -10,26 +10,51 @@ export default {
         label: "首页",
         icon: "s-home"
       }
-    ] //tab打开的菜单
+    ], //tab打开的菜单
+    allMenu:[]
   },
   mutations: {
+    // 设置tab菜单,根据菜单匹配出tab菜单name及path
     selectMenu(state, val) {
-      if (val.name === "home") {
+      // new
+      let nowItem = "";
+      state.allMenu.forEach((aitem,aindex) => {
+        if(aitem.path === val){
+          // state.tabsList.push(aitem);
+          nowItem = aitem;
+        }
+      });
+      if (val === "/") {
         state.currentMenu = null;
-        let result = state.tabsList.findIndex(item => item.name === val.name);
-        result === -1 ? state.tabsList.push(val) : "";
+        let result = state.tabsList.findIndex(item => item.path === val);
+        result === -1 ? state.tabsList.push(nowItem) : "";
       } else {
-        state.currentMenu = val;
-        let result = state.tabsList.findIndex(item => item.name === val.name);
-        result === -1 ? state.tabsList.push(val) : "";
+        state.currentMenu = nowItem;
+        let result = state.tabsList.findIndex(item => item.path === val);
+        result === -1 ? state.tabsList.push(nowItem) : "";
       }
+      // old
+      // state.tabsList.push(val)
+      // if (val.name === "home") {
+      //   state.currentMenu = null;
+      //   let result = state.tabsList.findIndex(item => item.name === val.name);
+      //   result === -1 ? state.tabsList.push(val) : "";
+      // } else {
+      //   state.currentMenu = val;
+      //   let result = state.tabsList.findIndex(item => item.name === val.name);
+      //   result === -1 ? state.tabsList.push(val) : "";
+      // }
       //存储菜单，防止刷新丢失
       storage.session_set('tabsList',state.tabsList)
       storage.session_set('currentMenu',state.currentMenu)
     },
+    // 设置所有菜单
+    setAllMenu(state, val){
+      // console.log('vuex-设置所有菜单',val)
+      state.allMenu = val;
+    },
     // 关闭单个标签
     closeTab(state, val) {
-      console.log("关闭单个标签之前", state.tabsList, state.currentMenu);
       if (state.tabsList.length > 0) {
         let result = state.tabsList.findIndex(item => item.name === val.name);
         state.tabsList.splice(result, 1);
@@ -53,7 +78,7 @@ export default {
       } else {
         console.log("没有了");
       }
-      storage.set('tabsList',state.tabsList)
+      storage.session_set('tabsList',state.tabsList)
       storage.session_set('currentMenu',state.currentMenu)
     },
     // 收缩左侧导航
@@ -83,6 +108,9 @@ export default {
   actions: {
     semenu({ commit }, val) {
       commit("selectMenu", val);
-    }
+    },
+    setAllMenu({ commit }, val) {
+      commit("setAllMenu", val);
+    },
   }
 };

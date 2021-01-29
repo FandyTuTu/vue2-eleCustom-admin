@@ -1,12 +1,12 @@
 /**
- * article模块接口列表
+ * 公共模块接口列表
  */
 
 import base from "./base"; // 导入接口域名列表
 import axios from "@/axios/request"; // 导入http中创建的axios实例
 import qs from "qs"; // 根据需求是否导入qs模块
 
-const article = {
+const common = {
   // 新闻列表
   articleList() {
     return axios.get(`${base.sq}/topics`);
@@ -18,9 +18,17 @@ const article = {
     });
   },
 
+  // 注册
+  register(params) {
+    return axios.post(`${base.sq}/api/admin_user/register`, qs.stringify(params));
+  },
   // 登录
   login(params) {
     return axios.post(`${base.sq}/api/admin_user/login`, qs.stringify(params));
+  },
+  // 修改密码
+  changePassword(params) {
+    return axios.post(`${base.sq}/api/admin_user/changePassword`, qs.stringify(params));
   },
   // 获取用户信息
   getuserInfo(params) {
@@ -40,4 +48,4 @@ const article = {
   // 其他接口…………
 };
 
-export default article;
+export default common;

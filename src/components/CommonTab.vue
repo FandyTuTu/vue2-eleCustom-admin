@@ -47,7 +47,9 @@ export default {
     ...mapMutations({
       close: "closeTab",
     }),
+    // 单个关闭
     handleClose(tag, tindex) {
+      console.log("tags", this.tags);
       this.close(tag);
       const item = this.tags[tindex]
         ? this.tags[tindex]
@@ -61,7 +63,8 @@ export default {
     },
     changeMenu(item) {
       this.$router.push({ name: item.name });
-      this.$store.commit("selectMenu", item);
+      // this.$store.commit("selectMenu", item);
+      this.$store.commit("selectMenu", item.path);
     },
     // 关闭全部标签
     closeAll() {
@@ -75,6 +78,7 @@ export default {
       });
       this.$store.commit("closeOther", curItem);
     },
+    // 更多-关闭
     handleTags(command) {
       command === "other" ? this.closeOther() : this.closeAll();
     },
@@ -83,12 +87,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*滚动条样式*/
+::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 6px !important;
+}
+::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
 .con-tab {
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
   position: relative;
   height: 40px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  // overflow-x: scroll;
 }
 .el-tag {
   margin-right: 15px;

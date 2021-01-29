@@ -1,6 +1,33 @@
+// @import "mixin";
+
+@mixin font {
+  font-size: 16px;
+}
+/*字体*/
+/**
+.fs14 {font-size: 28px}
+ */
+//@include font;
+
+@for $i from 8 through 32 {
+  .fs#{$i} {
+    font-size: $i * 1px;
+  }
+}
+/**
+.df1 {flex: 1}
+ */
+@for $i from 1 through 10 {
+  .df#{$i} {
+    flex: $i;
+  }
+}
 .ml10 {
   margin-left: 10px;
 }
 .mr10 {
   margin-right: 10px;
+}
+.mt10 {
+  margin-top: 10px;
 }

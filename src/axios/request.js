@@ -47,7 +47,7 @@ const errorHandle = (status, other) => {
     case 403:
       tip("登录过期，请重新登录");
       storage.session_remove("token");
-      store.commit("loginSuccess", null);
+      // store.commit("loginSuccess", null);
       setTimeout(() => {
         toLogin();
       }, 1000);
@@ -97,6 +97,7 @@ instance.interceptors.response.use(
   // 请求成功
   res => {
     if (res.status === 200 && res.data.code === 0) {
+      // tip(`${res.data.msg}`);
       return Promise.resolve(res);
     } else {
       tip(res.data.msg);

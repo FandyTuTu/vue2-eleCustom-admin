@@ -22,9 +22,11 @@
     <!-- 有子节点 -->
     <el-submenu
       index="index"
-      v-for="(item2, index2) in hasChildren"
-      :key="'data2' + index2"
+      v-for="item2 in hasChildren"
+      :key="item2.label"
+      :index="item2.path"
     >
+      <!-- :key="'data2' + index2" -->
       <template slot="title">
         <i :class="'el-icon-' + item2.icon"></i>
         <span>{{ item2.label }}</span>
@@ -99,10 +101,10 @@ export default {
   },
   computed: {
     noChildren() {
-      return this.asideMenu.filter((item) => !item.children);
+      return this.asideMenu.filter((item) => item.children.length === 0);
     },
     hasChildren() {
-      return this.asideMenu.filter((item) => item.children);
+      return this.asideMenu.filter((item) => item.children.length > 0);
     },
     isCollapse() {
       return this.$store.state.tab.isCollapse;
@@ -112,11 +114,22 @@ export default {
   watch: {
     $route(val) {
       this.setCurrentRoute();
+      const rlabel = val.meta.label;
+      const ricon = val.meta.icon;
+      const rpath = val.path;
+      let obj = {
+        path: rpath,
+        name: val.name,
+        label: rlabel,
+        icon: ricon,
+      };
+      this.$store.commit("selectMenu", obj);
     },
-    // 监听浏览器直接输入路由(包含跳转)，将此路由添加到tabsList
-    "$route.path": function(val) {
-      this.$store.commit("selectMenu", val);
-    },
+    // // 监听浏览器直接输入路由(包含跳转)，将此路由添加到tabsList
+    // "$route.path": function(val) {
+    //   console.log("监听路由", val);
+    //   this.$store.commit("selectMenu", val);
+    // },
   },
   created() {
     this.getMemu();
@@ -151,10 +164,10 @@ export default {
       // this.semenu(val);
     },
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      console.log("handleOpen", key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      console.log("handleClose", key, keyPath);
     },
   },
 };

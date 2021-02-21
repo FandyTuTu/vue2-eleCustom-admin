@@ -266,9 +266,13 @@ export default {
         });
         Cookie.set("token", "");
         that.$store.commit("setToken", "");
+        that.$store.commit("clearAllMenu");
       } else if (e === "rePsd") {
         that.dialogFormVisible = true;
       } else {
+        that.$router.push({
+          path: "/userInfo",
+        });
       }
     },
   },

@@ -124,9 +124,6 @@ export default {
         })
         .finally((all) => {});
     },
-    xx() {
-      console.log("xxx");
-    },
   },
   mounted() {},
 };

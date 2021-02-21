@@ -1,6 +1,6 @@
 <template>
     <div>
-        表格详情
+        upload5
     </div>
 </template>
 

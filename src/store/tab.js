@@ -17,21 +17,31 @@ export default {
     // 设置tab菜单,根据菜单匹配出tab菜单name及path
     selectMenu(state, val) {
       // new
-      let nowItem = "";
-      state.allMenu.forEach((aitem,aindex) => {
-        if(aitem.path === val){
-          // state.tabsList.push(aitem);
-          nowItem = aitem;
-        }
-      });
-      if (val === "/") {
+      // let nowItem = "";
+      // state.allMenu.forEach((aitem,aindex) => {
+      //   if(aitem.path === val){
+      //     // state.tabsList.push(aitem);
+      //     nowItem = aitem;
+      //   }
+      // });
+      // if (val === "/") {
+      //   state.currentMenu = null;
+      //   let result = state.tabsList.findIndex(item => item.path === val);
+      //   result === -1 ? state.tabsList.push(nowItem) : "";
+      // } else {
+      //   state.currentMenu = nowItem;
+      //   let result = state.tabsList.findIndex(item => item.path === val);
+      //   result === -1 ? state.tabsList.push(nowItem) : "";
+      // }
+      // now 
+      if (val.name === "home") {
         state.currentMenu = null;
-        let result = state.tabsList.findIndex(item => item.path === val);
-        result === -1 ? state.tabsList.push(nowItem) : "";
+        let result = state.tabsList.findIndex(item => item.name === val.name);
+        result === -1 ? state.tabsList.push(val) : "";
       } else {
-        state.currentMenu = nowItem;
-        let result = state.tabsList.findIndex(item => item.path === val);
-        result === -1 ? state.tabsList.push(nowItem) : "";
+        state.currentMenu = val;
+        let result = state.tabsList.findIndex(item => item.name === val.name);
+        result === -1 ? state.tabsList.push(val) : "";
       }
       // old
       // state.tabsList.push(val)
@@ -103,6 +113,13 @@ export default {
     closeOther(state, val) {
       state.tabsList = val;
       storage.session_set('tabsList',state.tabsList)
+    },
+    // 清除所有菜单
+    clearAllMenu(state){
+      state.tabsList = [];
+      state.currentMenu = {};
+      storage.session_set('tabsList',state.tabsList)
+      storage.session_set('currentMenu',state.currentMenu)
     }
   },
   actions: {

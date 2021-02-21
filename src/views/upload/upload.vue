@@ -1,6 +1,6 @@
 <template>
     <div>
-        表格详情
+        上传
     </div>
 </template>
 

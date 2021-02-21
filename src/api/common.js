@@ -37,6 +37,13 @@ const common = {
       qs.stringify(params)
     );
   },
+  // 编辑用户信息
+  editUserInfo(params) {
+    return axios.post(
+      `${base.sq}/api/admin_user/editUserInfo`,
+      qs.stringify(params)
+    );
+  },
   // 菜单
   getMenu(params) {
     return axios.post(

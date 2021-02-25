@@ -12,7 +12,6 @@ import VueAxios from "vue-axios";
 import api from "@/api"; // 导入api接口
 
 import "@/assets/iconfont/iconfont.css";
-// import http from "@/api/config";
 // import "./mock";
 
 // 第三方包

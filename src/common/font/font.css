@@ -1,0 +1,13 @@
+@font-face {  
+    font-family: 'PingFang';  
+    src: url('PingFang.ttf');  
+    font-weight: normal;  
+    font-style: normal;  
+  }
+
+  @font-face {  
+    font-family: 'PingFang-SC-Bold';  
+    src: url('PingFang-SC-Bold.ttf');  
+    font-weight: normal;  
+    font-style: normal;  
+  }

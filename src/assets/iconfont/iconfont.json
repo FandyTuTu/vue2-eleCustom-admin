@@ -1,0 +1,86 @@
+{
+  "id": "2226133",
+  "name": "amdin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7677917",
+      "name": "用户名",
+      "font_class": "yonghuming",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "7677932",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "1597921",
+      "name": "睁开",
+      "font_class": "zhengkai",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "1597923",
+      "name": "闭眼",
+      "font_class": "biyan",
+      "unicode": "e6ba",
+      "unicode_decimal": 59066
+    },
+    {
+      "icon_id": "16372241",
+      "name": "编辑流程",
+      "font_class": "bianjiliucheng",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "16372248",
+      "name": "插件功能",
+      "font_class": "chajiangongneng",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "16372251",
+      "name": "出库查询",
+      "font_class": "chukuchaxun",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "16394899",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "16394903",
+      "name": "收缩",
+      "font_class": "shousuo",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "16480067",
+      "name": "收藏列表",
+      "font_class": "shoucangliebiao",
+      "unicode": "e69b",
+      "unicode_decimal": 59035
+    },
+    {
+      "icon_id": "16517969",
+      "name": "待办",
+      "font_class": "daiban",
+      "unicode": "e6be",
+      "unicode_decimal": 59070
+    }
+  ]
+}

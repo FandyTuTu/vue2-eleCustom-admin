@@ -1,0 +1,8 @@
+stages:
+  - deploy
+
+job_deploy:
+  stage: deploy
+  script:
+    - cd /www/wwwroot/fandy/admin-vue2
+    - git pull

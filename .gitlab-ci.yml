@@ -5,3 +5,4 @@ job_deploy:
   script:
     - cd /www/wwwroot/fandy/admin-vue2
     - git pull
+

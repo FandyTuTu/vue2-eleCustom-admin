@@ -1,6 +1,5 @@
 stages:
   - deploy
-
 job_deploy:
   stage: deploy
   script:

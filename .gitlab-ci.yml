@@ -3,6 +3,8 @@ stages:
   
 job_deploy:
   stage: deploy
+  variables:
+    GIT_STRATEGY: none
   script:
     - cd /www/wwwroot/fandy
     - sh ./admin-vue2.sh

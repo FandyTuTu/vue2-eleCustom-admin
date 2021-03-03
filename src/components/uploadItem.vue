@@ -1,48 +1,49 @@
 <template>
-    <div>
-        <div class="link_list">
-            <div
-                class="imgList"
-                v-for="(item,index) in addForm.linkList"
-                :key="index"
+  <div>
+    <div class="link_list">
+      <div
+        class="imgList"
+        v-for="(item,index) in addForm.linkList"
+        :key="index"
+      >
+        <img
+          class="imgAdd"
+          :src="item.masterPic"
+          alt=""
+        >
+        <span class="imgTit">{{item.title}}</span>
+        <!-- <p class="recommendTitle" :title="item.title">{{item.title}}</p> -->
+        <div class="more">
+          <div>
+            <span
+              class="nPreview"
+              @click="preview_link(item.masterPic)"
             >
-                <img
-                    class="imgAdd"
-                    :src="item.masterPic"
-                    alt=""
-                >
-                <span class="imgTit">{{item.title}}</span>
-                <!-- <p class="recommendTitle" :title="item.title">{{item.title}}</p> -->
-                <div class="more">
-                    <div>
-                        <span
-                            class="nPreview"
-                            @click="preview_link(item.masterPic)"
-                        >
-                            <i class="el-icon-zoom-in"></i>
-                        </span>
-                        <span
-                            class="nDelete"
-                            @click="del_link(index)"
-                        >
-                            <i class="el-icon-delete"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="nupimg"
-                @click="add_fn"
+              <i class="el-icon-zoom-in"></i>
+            </span>
+            <span
+              class="nDelete"
+              @click="del_link(index)"
             >
-                <div class="add_shopicon">
-                    <i :class="addIcon"></i>
-                    <!-- style="margin: 20%;margin: 0;padding-top: 50%;" -->
-                    <!-- <span style="margin-top: -30%;">{{addText}}</span> -->
-                    <span>{{addText}}</span>
-                </div>
-            </div>
+              <i class="el-icon-delete"></i>
+            </span>
+          </div>
         </div>
+      </div>
+      <div
+        class="nupimg"
+        @click="add_fn"
+        :http-request="fileUpload"
+      >
+        <div class="add_shopicon">
+          <i :class="addIcon"></i>
+          <!-- style="margin: 20%;margin: 0;padding-top: 50%;" -->
+          <!-- <span style="margin-top: -30%;">{{addText}}</span> -->
+          <span>{{addText}}</span>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

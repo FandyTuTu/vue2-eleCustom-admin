@@ -1,6 +1,16 @@
 <template>
   <div>
     <el-button @click="goPage">跳转</el-button>
+    <el-alert
+      title="基础表格"
+      type="warning"
+      description="常用的表格"
+      show-icon
+      :closable='false'
+      class="custom-table"
+      style="margin-bottom: 20px"
+    >
+    </el-alert>
     <el-table
       :data="tableData"
       stripe
@@ -24,7 +34,19 @@
       >
       </el-table-column>
     </el-table>
-    <h3 class="mt10">设置表头颜色</h3>
+    <el-alert
+      title="设置表头颜色"
+      type="warning"
+      description="自定义表格颜色"
+      show-icon
+      :closable='false'
+      class="custom-table"
+    >
+    </el-alert>
+    <div style="margin-top: 20px">
+      <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>
+      <el-button @click="toggleSelection()">取消选择</el-button>
+    </div>
     <div class="selecion-box">
       <el-table
         border
@@ -60,10 +82,6 @@
         >
         </el-table-column>
       </el-table>
-      <div style="margin-top: 20px">
-        <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>
-        <el-button @click="toggleSelection()">取消选择</el-button>
-      </div>
     </div>
   </div>
 </template>
@@ -129,5 +147,8 @@ export default {
 <style lang="scss" scoped>
 .selecion-box {
   margin-top: 30px;
+}
+.custom-table {
+  margin-top: 20px;
 }
 </style>

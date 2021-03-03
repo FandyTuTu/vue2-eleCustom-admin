@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- <uploadImg
+    <!-- <uploadItem
       addText="图片上传"
       addIcon="el-icon-upload2"
       @send="gotest"
-    ></uploadImg> -->
+    ></uploadItem> -->
     <Histogram
       ref="necharts"
       width="500px"
@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import uploadImg from "@/components/uploadImg";
+import uploadItem from "@/components/uploadItem";
 import Histogram from "@/components/Histogram";
 export default {
   components: {
-    uploadImg,
+    uploadItem,
     Histogram,
   },
   data() {

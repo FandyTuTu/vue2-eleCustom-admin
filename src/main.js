@@ -12,18 +12,38 @@ import VueAxios from "vue-axios";
 import api from "@/api"; // 导入api接口
 
 import "@/assets/iconfont/iconfont.css";
-// import http from "@/api/config";
 // import "./mock";
 
 // 第三方包
 import ElementUI from "element-ui";
 import '../theme/index.css';//自定义elementui
 import Cookie from "js-cookie";
+import Viewer from 'v-viewer'
+import 'viewerjs/dist/viewer.css'
 //导入进度条插件
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import echarts from 'echarts'
 
+Vue.use(Viewer);
+Viewer.setDefaults({
+  Options: {
+   "inline": true,
+   "button": true, 
+   "navbar": true, 
+   "title": true, 
+   "toolbar": true, 
+   "tooltip": true, 
+   "movable": true, 
+   "zoomable": true, 
+   "rotatable": true, 
+   "scalable": true, 
+   "transition": true, 
+   "fullscreen": true, 
+   "keyboard": true, 
+   "url": "data-source" 
+  }
+});
 Vue.prototype.$echarts = echarts
 Vue.use(ElementUI);
 Vue.use(VueAxios, axios);

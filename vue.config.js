@@ -36,7 +36,7 @@ module.exports = {
     port: 7758, // 开发服务器运行端口号
     proxy: {
       "/api": {
-        target: "https://hscom.efotile.com/", //要访问的
+        target: "https://xx.com/", //要访问的
         changeOrigin: true,
         ws: true,
         pathRewrite: {

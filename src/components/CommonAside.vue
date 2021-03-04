@@ -9,8 +9,43 @@
     text-color="#fff"
     active-text-color="#ffd04b"
   >
+    <!-- <div class="aside-title">chk</div> -->
+    <div
+      v-for="aitem in asideMenu"
+      :key="aitem.path"
+    >
+      <el-menu-item
+        v-if="aitem.children.length === 0"
+        @click="chlickMenu(aitem)"
+        :index="aitem.path"
+      >
+        <i :class="'el-icon-' + aitem.icon"></i>
+        <span slot="title">{{ aitem.label }}</span>
+      </el-menu-item>
+      <!-- has -->
+      <el-submenu
+        :index="aitem.path"
+        v-if="aitem.children.length > 0"
+      >
+        <template slot="title">
+          <i :class="'el-icon-' + aitem.icon"></i>
+          <span>{{ aitem.label }}</span>
+        </template>
+
+        <el-menu-item-group
+          v-if="aitem.children.length > 0"
+          v-for="(citem, cindex) in aitem.children"
+          :key="'data3' + cindex"
+        >
+          <el-menu-item
+            :index="citem.path"
+            @click="chlickMenu(citem)"
+          >{{ citem.label }}</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+    </div>
     <!-- 没有子节点 -->
-    <el-menu-item
+    <!-- <el-menu-item
       :index="item.path"
       v-for="(item, index) in noChildren"
       :key="'data1' + index"
@@ -18,15 +53,14 @@
     >
       <i :class="'el-icon-' + item.icon"></i>
       <span slot="title">{{ item.label }}</span>
-    </el-menu-item>
+    </el-menu-item> -->
     <!-- 有子节点 -->
-    <el-submenu
+    <!-- <el-submenu
       index="index"
       v-for="item2 in hasChildren"
       :key="item2.label"
       :index="item2.path"
     >
-      <!-- :key="'data2' + index2" -->
       <template slot="title">
         <i :class="'el-icon-' + item2.icon"></i>
         <span>{{ item2.label }}</span>
@@ -43,7 +77,7 @@
           citem.label
           }}</el-menu-item>
       </el-menu-item-group>
-    </el-submenu>
+    </el-submenu> -->
   </el-menu>
 </template>
 
@@ -172,8 +206,34 @@ export default {
   },
 };
 </script>
+<style lang="css">
+/*滚动条样式*/
+::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 4px !important;
+}
+::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+</style>
 
 <style lang="scss" scoped>
+.aside-title {
+  font-size: 26px;
+  text-align: center;
+  color: #f0f0f0;
+  padding: 10px 0;
+}
 .el-menu {
   height: 100%;
 }

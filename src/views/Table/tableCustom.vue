@@ -1,75 +1,85 @@
 <template>
   <div>
-    <el-table
-      :data="tableData"
-      style="width: 100%"
-    >
-      <el-table-column
-        label="日期"
-        width="180"
+    <div>
+      <el-button
+        class="mb10"
+        type="primary"
+        icon="el-icon-delete"
+        @click="del()"
+      >批量删除</el-button>
+      <el-table
+        :data="tableData"
+        style="width: 100%"
+        border
+        stripe
+        @selection-change="handleSelectionChange"
+        :header-cell-style="{background:'#e4e4e4',color:'#606266',height:'50px'}"
       >
-        <template slot-scope="scope">
-          <i class="el-icon-time"></i>
-          <span style="margin-left: 10px">{{ scope.row.date }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="姓名"
-        width="180"
-      >
-        <template slot-scope="scope">
-          <el-popover
-            trigger="hover"
-            placement="top"
-          >
-            <p>姓名: {{ scope.row.name }}</p>
-            <p>住址: {{ scope.row.address }}</p>
+        <el-table-column
+          type="selection"
+          width="55"
+        >
+        </el-table-column>
+        <el-table-column
+          label="操作"
+          width="180"
+        >
+          <template slot-scope="scope">
+            <el-button
+              size="mini"
+              @click="handleEdit(scope.$index, scope.row)"
+            >编辑</el-button>
+            <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.$index, scope.row)"
+            >删除</el-button>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="日期"
+          width="180"
+        >
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.date }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="姓名"
+          width="180"
+        >
+          <template slot-scope="scope">
+            {{ scope.row.name }}
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="头像"
+          width="180"
+        >
+          <template slot-scope="scope">
             <div
-              slot="reference"
-              class="name-wrapper"
-            >
-              <el-tag size="medium">{{ scope.row.name }}</el-tag>
-            </div>
-          </el-popover>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="头像"
-        width="180"
-      >
-        <template slot-scope="scope">
-          <div
-            class="table-avatar"
-            v-viewer.rebuild="{scalable: true, zoomable: true, movable: true}"
-          >
-            <!-- <img
-              class=""
-              v-lazy="formatPicPath(scope)"
-              :key="formatPicPath(scope)"
-              alt=""
-            > -->
-            <img
-              :src="scope.row.avatar"
-              alt="avatar"
               class="table-avatar"
+              v-viewer.rebuild="{scalable: true, zoomable: true, movable: true}"
             >
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            @click="handleEdit(scope.$index, scope.row)"
-          >编辑</el-button>
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)"
-          >删除</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+              <img
+                :src="scope.row.avatar"
+                alt="avatar"
+                class="table-avatar"
+              >
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="地址"
+          width=""
+        >
+          <template slot-scope="scope">
+            {{ scope.row.address }}
+          </template>
+        </el-table-column>
+      </el-table>
+
+    </div>
   </div>
 </template>
 
@@ -79,6 +89,7 @@ export default {
     return {
       tableData: [
         {
+          id: "1",
           date: "2021-05-02",
           name: "张三",
           avatar:
@@ -86,12 +97,14 @@ export default {
           address: "上海市闵行区xx路 1518 弄",
         },
         {
+          id: "2",
           date: "2021-05-04",
           name: "张三",
           avatar: "https://avatars.githubusercontent.com/u/79627228?s=60&v=4",
           address: "上海市闵行区xx路 1517 弄",
         },
         {
+          id: "3",
           date: "2021-05-01",
           name: "张三",
           avatar:
@@ -99,12 +112,14 @@ export default {
           address: "上海市闵行区xx路 1519 弄",
         },
         {
+          id: "4",
           date: "2021-05-03",
           name: "张三",
           avatar: "https://avatars.githubusercontent.com/u/79627228?s=60&v=4",
           address: "上海市闵行区xx路 1516 弄",
         },
       ],
+      multipleSelection: [],
     };
   },
   methods: {
@@ -119,9 +134,22 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
     },
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
+    },
+    del() {
+      if (this.multipleSelection.length > 0) {
+        this.$message.warning("批量删除!");
+      } else {
+        this.$message.warning("请选择一条数据!");
+      }
+    },
   },
 };
 </script>
+<style lang="scss">
+@import "@/assets/scss/common.scss";
+</style>
 
 <style lang="scss" scoped>
 .table-avatar {

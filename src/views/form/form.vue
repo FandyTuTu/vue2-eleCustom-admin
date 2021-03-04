@@ -45,7 +45,7 @@
                     ></el-time-picker>
                 </el-col>
             </el-form-item>
-            <el-form-item label="即时配送">
+            <el-form-item label="好吃的">
                 <el-switch v-model="form.delivery"></el-switch>
             </el-form-item>
             <el-form-item label="活动性质">

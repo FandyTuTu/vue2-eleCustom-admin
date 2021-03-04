@@ -54,18 +54,6 @@ const routes = [
           requireAuth: true //true此页面需登录权限
         }
       },
-
-      {
-        path: "/user",
-        name: "user",
-        component: () => import("@/views/userManage/userManage"),
-        meta: {
-          label: '用户管理',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-
       {
         path: "/page1",
         name: "page1",
@@ -89,11 +77,11 @@ const routes = [
       },
       
       {
-        path: "/test",
-        name: "test",
-        component: () => import("@/views/test"),
+        path: "/echarts",
+        name: "echarts",
+        component: () => import("@/views/echarts"),
         meta: {
-          label: '测试',
+          label: 'echarts',
           icon:'video-play',
           requireAuth: true //true此页面需登录权限
         }
@@ -214,97 +202,7 @@ const routes = [
           requireAuth: true //true此页面需登录权限
         }
       },
-      {
-        path: "/upload2",
-        name: "upload2",
-        component: () => import("@/views/upload/upload2"),
-        meta: {
-          label: '上传2',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      {
-        path: "/upload3",
-        name: "upload3",
-        component: () => import("@/views/upload/upload3"),
-        meta: {
-          label: '上传3',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      {
-        path: "/upload4",
-        name: "upload4",
-        component: () => import("@/views/upload/upload4"),
-        meta: {
-          label: '上传4',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      {
-        path: "/upload5",
-        name: "upload5",
-        component: () => import("@/views/upload/upload5"),
-        meta: {
-          label: '上传5',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      {
-        path: "/upload6",
-        name: "upload6",
-        component: () => import("@/views/upload/upload6"),
-        meta: {
-          label: '上传6',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      {
-        path: "/upload7",
-        name: "upload7",
-        component: () => import("@/views/upload/upload7"),
-        meta: {
-          label: '上传7',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      {
-        path: "/upload8",
-        name: "upload8",
-        component: () => import("@/views/upload/upload8"),
-        meta: {
-          label: '上传8',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      {
-        path: "/upload9",
-        name: "upload9",
-        component: () => import("@/views/upload/upload9"),
-        meta: {
-          label: '上传9',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      {
-        path: "/upload10",
-        name: "upload10",
-        component: () => import("@/views/upload/upload10"),
-        meta: {
-          label: '上传10',
-          icon:'video-play',
-          requireAuth: true //true此页面需登录权限
-        }
-      },
-      
+     
     ]
   }
 ];

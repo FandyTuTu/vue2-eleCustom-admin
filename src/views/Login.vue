@@ -15,7 +15,7 @@
         <el-input
           type="text"
           v-model="ruleForm.userName"
-          placeholder="用户名"
+          placeholder="admin"
           clearable
         >
           <i
@@ -32,7 +32,7 @@
         <el-input
           :type="showPsd ? 'text' : 'password'"
           v-model="ruleForm.psd"
-          placeholder="密码"
+          placeholder="123456"
           @keyup.enter.native="submitForm('ruleForm')"
         >
           <i

@@ -1,19 +1,19 @@
 {
-  "_from": "tinymce",
+  "_from": "tinymce@^5.7.0",
   "_id": "tinymce@5.7.0",
   "_inBundle": false,
   "_integrity": "sha512-WikgMpJbqYPaucV3lfstCj+Y4NquZlK61gyuJ2eqDUBlSU+4fFh6rpwnelVTxuvtEyJsAVOl8HZmbzBfDJiLsQ==",
   "_location": "/tinymce",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "tinymce",
+    "raw": "tinymce@^5.7.0",
     "name": "tinymce",
     "escapedName": "tinymce",
-    "rawSpec": "",
+    "rawSpec": "^5.7.0",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^5.7.0"
   },
   "_requiredBy": [
     "#USER",
@@ -22,7 +22,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/tinymce/-/tinymce-5.7.0.tgz",
   "_shasum": "bc565877e4041db83848a330dfa7916993110cba",
-  "_spec": "tinymce",
+  "_spec": "tinymce@^5.7.0",
   "_where": "D:\\fandy-item\\admin-vue2",
   "author": {
     "name": "Tiny Technologies, Inc"

@@ -2,8 +2,13 @@
   <div>
     <tinymce-text
       id="tinymce"
-      @release="release"
-    ></tinymce-text>
+      v-model="describe"
+    >
+    </tinymce-text>
+    <el-button
+      @click="release"
+      class="mt10"
+    >保存</el-button>
   </div>
 </template>
 
@@ -13,11 +18,13 @@ import TinymceText from "@/components/TinymceText";
 export default {
   name: "",
   data() {
-    return {};
+    return {
+      describe: "",
+    };
   },
   methods: {
-    release(content) {
-      console.log(content);
+    release() {
+      console.log("保存", this.describe);
     },
   },
   components: {
@@ -26,3 +33,8 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.mt10 {
+  margin-top: 10px;
+}
+</style>

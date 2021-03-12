@@ -1,51 +1,66 @@
 <template>
-  <el-menu
-    :default-active="activeIndex"
-    :collapse="isCollapse"
-    class="el-menu-vertical-demo"
-    @open="handleOpen"
-    @close="handleClose"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
-  >
-    <!-- <div class="aside-title">chk</div> -->
-    <div
-      v-for="aitem in asideMenu"
-      :key="aitem.path"
+  <div>
+    <el-menu
+      :default-active="activeIndex"
+      :collapse="isCollapse"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
     >
-      <el-menu-item
-        v-if="aitem.children.length === 0"
-        @click="chlickMenu(aitem)"
-        :index="aitem.path"
-      >
-        <i :class="'el-icon-' + aitem.icon"></i>
-        <span slot="title">{{ aitem.label }}</span>
-      </el-menu-item>
-      <!-- has -->
-      <el-submenu
-        :index="aitem.path"
-        v-if="aitem.children.length > 0"
-      >
-        <template slot="title">
-          <i :class="'el-icon-' + aitem.icon"></i>
-          <span>{{ aitem.label }}</span>
-        </template>
-
-        <el-menu-item-group
-          v-if="aitem.children.length > 0"
-          v-for="(citem, cindex) in aitem.children"
-          :key="'data3' + cindex"
+      <div class="aside-title">
+        <img
+          src="../assets/chigua.png"
+          alt=""
         >
-          <el-menu-item
-            :index="citem.path"
-            @click="chlickMenu(citem)"
-          >{{ citem.label }}</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-    </div>
-    <!-- 没有子节点 -->
-    <!-- <el-menu-item
+        <span v-show="!isCollapse">吃瓜库</span>
+      </div>
+      <div
+        v-for="aitem in asideMenu"
+        :key="aitem.path"
+      >
+        <el-menu-item
+          v-if="aitem.children.length === 0"
+          @click="chlickMenu(aitem)"
+          :index="aitem.path"
+        >
+          <!-- <i :class="'el-icon-' + aitem.icon"></i> -->
+          <i
+            class="icon iconfont iconfont-reset"
+            :class="aitem.icon"
+          ></i>
+          <span slot="title">{{ aitem.label }}</span>
+        </el-menu-item>
+        <!-- has -->
+        <el-submenu
+          :index="aitem.path"
+          v-if="aitem.children.length > 0"
+        >
+          <template slot="title">
+            <!-- <i :class="'el-icon-' + aitem.icon"></i> -->
+            <i
+              class="icon iconfont iconfont-reset"
+              :class="aitem.icon"
+            ></i>
+            <span>{{ aitem.label }}</span>
+          </template>
+
+          <el-menu-item-group
+            v-if="aitem.children.length > 0"
+            v-for="(citem, cindex) in aitem.children"
+            :key="'data3' + cindex"
+          >
+            <el-menu-item
+              :index="citem.path"
+              @click="chlickMenu(citem)"
+            >{{ citem.label }}</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+      </div>
+      <!-- 没有子节点 -->
+      <!-- <el-menu-item
       :index="item.path"
       v-for="(item, index) in noChildren"
       :key="'data1' + index"
@@ -54,8 +69,8 @@
       <i :class="'el-icon-' + item.icon"></i>
       <span slot="title">{{ item.label }}</span>
     </el-menu-item> -->
-    <!-- 有子节点 -->
-    <!-- <el-submenu
+      <!-- 有子节点 -->
+      <!-- <el-submenu
       index="index"
       v-for="item2 in hasChildren"
       :key="item2.label"
@@ -78,7 +93,8 @@
           }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu> -->
-  </el-menu>
+    </el-menu>
+  </div>
 </template>
 
 <script>
@@ -225,14 +241,33 @@ export default {
   border-radius: 0;
   background: rgba(0, 0, 0, 0.1);
 }
+/*隐藏文字*/
+.el-menu--collapse .el-submenu__title span {
+  display: none;
+}
+/*隐藏 > */
+.el-menu--collapse .el-submenu__title .el-submenu__icon-arrow {
+  display: none;
+}
 </style>
 
 <style lang="scss" scoped>
+.iconfont-reset {
+  margin-right: 6px;
+}
 .aside-title {
   font-size: 26px;
   text-align: center;
   color: #f0f0f0;
   padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #000;
+  img {
+    width: 50px;
+    height: 50px;
+  }
 }
 .el-menu {
   height: 100%;

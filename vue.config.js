@@ -11,7 +11,7 @@ module.exports = {
       }
     }
   },
-  // 公共路径
+  // 公共路径1
   publicPath: "./",
   // 输出文件目录
   outputDir: "dist",

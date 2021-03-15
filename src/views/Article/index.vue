@@ -5,6 +5,10 @@
       v-model="describe"
     >
     </tinymce-text>
+    <tinymce-text
+      id="tinymce2"
+      v-model="describe2"
+    ></tinymce-text>
     <el-button
       @click="release"
       class="mt10"
@@ -20,11 +24,12 @@ export default {
   data() {
     return {
       describe: "",
+      describe2: "",
     };
   },
   methods: {
     release() {
-      console.log("保存", this.describe);
+      console.log("保存", this.describe, "****", this.describe2);
     },
   },
   components: {

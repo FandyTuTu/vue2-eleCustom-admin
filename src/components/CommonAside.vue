@@ -1,66 +1,65 @@
 <template>
-  <div>
-    <el-menu
-      :default-active="activeIndex"
-      :collapse="isCollapse"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-    >
-      <div class="aside-title">
-        <img
-          src="../assets/chigua.png"
-          alt=""
-        >
-        <span v-show="!isCollapse">吃瓜库</span>
-      </div>
-      <div
-        v-for="aitem in asideMenu"
-        :key="aitem.path"
+  <el-menu
+    :default-active="activeIndex"
+    :collapse="isCollapse"
+    class="el-menu-vertical-demo"
+    @open="handleOpen"
+    @close="handleClose"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b"
+  >
+    <div class="aside-title">
+      <img
+        src="../assets/chigua.png"
+        alt=""
       >
-        <el-menu-item
-          v-if="aitem.children.length === 0"
-          @click="chlickMenu(aitem)"
-          :index="aitem.path"
-        >
+      <span v-show="!isCollapse">吃瓜库</span>
+    </div>
+    <div
+      v-for="aitem in asideMenu"
+      :key="aitem.path"
+    >
+      <el-menu-item
+        v-if="aitem.children.length === 0"
+        @click="chlickMenu(aitem)"
+        :index="aitem.path"
+      >
+        <!-- <i :class="'el-icon-' + aitem.icon"></i> -->
+        <i
+          class="icon iconfont iconfont-reset"
+          :class="aitem.icon"
+        ></i>
+        <span slot="title">{{ aitem.label }}</span>
+      </el-menu-item>
+      <!-- has -->
+      <el-submenu
+        :index="aitem.path"
+        v-if="aitem.children.length > 0"
+      >
+        <template slot="title">
           <!-- <i :class="'el-icon-' + aitem.icon"></i> -->
           <i
             class="icon iconfont iconfont-reset"
             :class="aitem.icon"
           ></i>
-          <span slot="title">{{ aitem.label }}</span>
-        </el-menu-item>
-        <!-- has -->
-        <el-submenu
-          :index="aitem.path"
-          v-if="aitem.children.length > 0"
-        >
-          <template slot="title">
-            <!-- <i :class="'el-icon-' + aitem.icon"></i> -->
-            <i
-              class="icon iconfont iconfont-reset"
-              :class="aitem.icon"
-            ></i>
-            <span>{{ aitem.label }}</span>
-          </template>
+          <span>{{ aitem.label }}</span>
+        </template>
 
-          <el-menu-item-group
-            v-if="aitem.children.length > 0"
-            v-for="(citem, cindex) in aitem.children"
-            :key="'data3' + cindex"
-          >
-            <el-menu-item
-              :index="citem.path"
-              @click="chlickMenu(citem)"
-            >{{ citem.label }}</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-      </div>
-      <!-- 没有子节点 -->
-      <!-- <el-menu-item
+        <el-menu-item-group
+          v-if="aitem.children.length > 0"
+          v-for="(citem, cindex) in aitem.children"
+          :key="'data3' + cindex"
+        >
+          <el-menu-item
+            :index="citem.path"
+            @click="chlickMenu(citem)"
+          >{{ citem.label }}</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+    </div>
+    <!-- 没有子节点 -->
+    <!-- <el-menu-item
       :index="item.path"
       v-for="(item, index) in noChildren"
       :key="'data1' + index"
@@ -69,8 +68,8 @@
       <i :class="'el-icon-' + item.icon"></i>
       <span slot="title">{{ item.label }}</span>
     </el-menu-item> -->
-      <!-- 有子节点 -->
-      <!-- <el-submenu
+    <!-- 有子节点 -->
+    <!-- <el-submenu
       index="index"
       v-for="item2 in hasChildren"
       :key="item2.label"
@@ -93,8 +92,8 @@
           }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu> -->
-    </el-menu>
-  </div>
+  </el-menu>
+
 </template>
 
 <script>

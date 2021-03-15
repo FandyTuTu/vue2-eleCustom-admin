@@ -73,7 +73,7 @@ export default {
       hasChange: false,
       hasInit: false,
       menubar: false,
-      height: "600px",
+      height: "400px",
       body_class: "panel-body ",
       object_resizing: false,
       end_container_on_empty_block: true,
